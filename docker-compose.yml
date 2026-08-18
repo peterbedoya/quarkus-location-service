@@ -19,7 +19,10 @@ services:
       retries: 5
 
   location-service:
-    image: ghcr.io/your-username/quarkus-location-service:latest
+    # La imagen se define con una variable de entorno para mayor flexibilidad.
+    # Antes de ejecutar 'docker-compose up', define la variable DOCKER_IMAGE_NAME.
+    # Ejemplo: export DOCKER_IMAGE_NAME=ghcr.io/tu-usuario/tu-repo:latest
+    image: ${DOCKER_IMAGE_NAME:-ghcr.io/your-username/quarkus-location-service:latest}
     container_name: location_quarkus_app
     environment:
       DB_HOST: postgres
